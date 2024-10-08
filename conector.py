@@ -36,3 +36,5 @@ class Manage():
             self.connect()
         return "Consulta executada com sucesso!"
 
+    def fetch_all(self):
+        return self.mycursor.fetchall()

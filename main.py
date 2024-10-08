@@ -1,17 +1,19 @@
 from inserts import *
-
+from selects import *
+from procedures import *
+from views import *
+from createDB import *
 
 def main(): 
     while True:
         print("O que você gostaria de fazer?")
         print("1 - Inserir dados")
         print("2 - Selecionar dados")
-        print("3 - Criar banco de dados")
-        print("4 - Deletar banco de dados")
-        print("5 - Sair")
-        
+        print("3 - Visualizar views")
+        print("4 - Criar banco de dados")
+        print("5 - Deletar banco de dados (PERIGO)")
+        print("6 - Sair")
         escolha = input("Digite o número da opção: ")
-        
         match escolha:
             case "1":
                 print("Inserir dados")
@@ -44,23 +46,50 @@ def main():
                 break
             case "2":
                 print("Selecionar dados")
+                print("1 - Visualizar a tabela cliente")
+                print("2 - Visualizar a tabela fornecedor")
+                print("3 - Visualizar a tabela ingredientes")
+                print("4 - Visualizar a tabela prato")
+                print("5 - Visualizar a tabela usos")
+                print("6 - Visualizar a tabela vendas")
+                escolha_select = input("Escolha uma opção: ")
+                match escolha_select:
+                    case "1":
+                        select_cliente()
+                        print("Inserido com successo")
+                    case "2":
+                        
+                        print("Inserido com successo")
+                    case "3":
+                        
+                        print("Inserido com successo")
+                    case "4":
+                        
+                        print("Inserido com successo")
+                    case "5":
+                       
+                        print("Inserido com successo")
+                    case "6":
+                       
+                        print("Inserido com successo")
                 # Chamar função para selecionar dados
                 break
             case "3":
-                print("Criar banco de dados")
-                # Chamar função para criar banco de dados
-                break
+                print("Visualizar views")
             case "4":
-                print("VOCÊ TEM CERTEZA DE DELETAR?")
+                print("Criar banco de dados")
+                create_database()
+                break
+            case "5":
+                print("VOCÊ TEM CERTEZA?")
                 print("Y - Deletar o banco de dados")
                 print("N - Voltar")
                 escolha_delete = input("Escolha uma opção: ")
                 match escolha_delete:
-                    case "Y": 
+                    case "Y": break
                     case "N": break
-                # Chamar função para deletar banco de dados
                 break
-            case "5":
+            case "6":
                 print("Sair")
                 break
             case _:
