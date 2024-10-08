@@ -56,26 +56,30 @@ def main():
                 match escolha_select:
                     case "1":
                         select_cliente()
-                        print("Inserido com successo")
                     case "2":
-                        
-                        print("Inserido com successo")
+                        select_fornecedor
                     case "3":
-                        
-                        print("Inserido com successo")
+                        select_ingredientes()
                     case "4":
-                        
-                        print("Inserido com successo")
+                        select_prato()
                     case "5":
-                       
-                        print("Inserido com successo")
+                       select_usos()
                     case "6":
-                       
-                        print("Inserido com successo")
-                # Chamar função para selecionar dados
+                       select_vendas()
                 break
             case "3":
-                print("Visualizar views")
+                print("Selecionar Views")
+                print("1 - Visualizar a visão de detalhes das vendas")
+                print("2 - Visualizar a visão vendas por clientes")
+                print("3 - Visualizar a visão de vendas por dia")
+                escolha_view = input("Escolha uma opção: ")
+                match escolha_view:
+                    case "1":
+                        break
+                    case "2":
+                        break
+                    case "3":
+                        break
             case "4":
                 print("Criar banco de dados")
                 create_database()

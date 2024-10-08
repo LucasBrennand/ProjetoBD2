@@ -105,7 +105,7 @@ def insert_usos():
 def insert_vendas():
     id_cliente = input("Digite o ID do cliente: ")
     id_prato = input("Digite o ID do prato: ")
-    qtd = input("Digite a quantidade de vendas: ")
+    quantidade = input("Digite a quantidade de vendas: ")
     dia = input("Digite o dia da venda: (Ano -  Mes - Dia): ")
     hora = input("Digite a hora da venda (00:00:00): ")
     valor = input("Digite o valor da venda: ")
@@ -113,15 +113,15 @@ def insert_vendas():
     data = [
         id_cliente,
         id_prato,
-        qtd,
+        quantidade,
         dia,
         hora,
         valor
     ]
 
     sql = """
-        INSERT INTO vendas (id_cliente, id_prato, quantidade, hora, valor)
-        VALUES (%s,%s)
+        INSERT INTO vendas (id_cliente, id_prato, quantidade, dia, hora, valor)
+        VALUES (%s,%s,%s,%s,%s,%s)
     """ #Segurança contra SQL injection
     response = manager.execute_query(sql,data)
 
