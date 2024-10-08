@@ -3,6 +3,7 @@ from selects import *
 from procedures import *
 from views import *
 from createDB import *
+from deleteDB import *
 
 def main(): 
     while True:
@@ -14,7 +15,8 @@ def main():
         print("5 - Deletar banco de dados (PERIGO)")
         print("6 - Sair")
         escolha = input("Digite o número da opção: ")
-        match escolha:
+        while escolha != 6:
+         match escolha:
             case "1":
                 print("Inserir dados")
                 print("1 - Inserir na tabela cliente")
@@ -56,16 +58,22 @@ def main():
                 match escolha_select:
                     case "1":
                         select_cliente()
+                        break
                     case "2":
                         select_fornecedor
+                        break
                     case "3":
                         select_ingredientes()
+                        break
                     case "4":
                         select_prato()
+                        break
                     case "5":
                        select_usos()
+                       break
                     case "6":
                        select_vendas()
+                       break
                 break
             case "3":
                 print("Selecionar Views")
@@ -75,11 +83,15 @@ def main():
                 escolha_view = input("Escolha uma opção: ")
                 match escolha_view:
                     case "1":
+                        view_detalhes_venda()
                         break
                     case "2":
+                        view_vendas_por_cliente
                         break
                     case "3":
+                        view_vendas_por_dia
                         break
+                break
             case "4":
                 print("Criar banco de dados")
                 create_database()
@@ -90,8 +102,11 @@ def main():
                 print("N - Voltar")
                 escolha_delete = input("Escolha uma opção: ")
                 match escolha_delete:
-                    case "Y": break
-                    case "N": break
+                    case "Y": 
+                        delete_database()
+                        break
+                    case "N": 
+                        break
                 break
             case "6":
                 print("Sair")
