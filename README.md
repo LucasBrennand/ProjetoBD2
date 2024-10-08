@@ -1,5 +1,4 @@
 # ProjetoBD2
-<h1>ProjetoBD2</h1>
 Este projeto é um sistema de gerenciamento de restaurante, desenvolvido em Python e MySQL. O objetivo é fornecer uma ferramenta para gerenciar as vendas, estoque e informações dos pratos e clientes.
 
 <h2>Estrutura do Código</h2>
