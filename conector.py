@@ -16,9 +16,9 @@ class Manage():
                 database="restaurante",
             )
             self.mycursor = self.mybd.cursor()
-            print("Conexão sucesso")
+            print("Conexão sucesso \n")
         except mysql.connector.Error as error:
-            print(f"Conexão deu erro {error}")
+            print(f"Conexão deu erro {error} \n")
             time.sleep(5)
             self.connect()
 
@@ -31,10 +31,10 @@ class Manage():
                 self.mycursor.execute(sql)
             self.mybd.commit()
         except mysql.connector.Error as error:
-            print(f"Conexão deu erro {error}")
+            print(f"Conexão deu erro {error} \n")
             time.sleep(5)
             self.connect()
-        return "Consulta executada com sucesso!"
+        return "Consulta executada com sucesso! \n"
 
     def fetch_all(self):
         return self.mycursor.fetchall()

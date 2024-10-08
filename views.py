@@ -18,13 +18,13 @@ def view_detalhes_venda():
         print(df)
 
     except Exception as e:
-        print(f"An error occurred: {e}")
+        print(f"An error occurred: {e} \n")
 
     finally:
         if connection.mybd.is_connected():
             cursor.close()
             connection.mybd.close()
-            print("Conexão encerrada.")
+            print("Conexão encerrada. \n")
 
 def view_vendas_por_cliente():
     connection = Manage()
@@ -42,13 +42,13 @@ def view_vendas_por_cliente():
         print(df)
 
     except Exception as e:
-        print(f"An error occurred: {e}")
+        print(f"An error occurred: {e} \n")
 
     finally:
         if connection.mybd.is_connected():
             cursor.close()
             connection.mybd.close()
-            print("Conexão encerrada.")
+            print("Conexão encerrada. \n")
 
 def view_vendas_por_dia():
     connection = Manage()
@@ -66,10 +66,10 @@ def view_vendas_por_dia():
         print(df)
 
     except Exception as e:
-        print(f"An error occurred: {e}")
+        print(f"An error occurred: {e} \n")
 
     finally:
         if connection.mybd.is_connected():
             cursor.close()
             connection.mybd.close()
-            print("Conexão encerrada.")
+            print("Conexão encerrada. \n")

@@ -12,10 +12,10 @@ def create_database():
         print("Conexão ao servidor MySQL estabelecida com sucesso.")
         db_name = input("Digite o nome do novo banco de dados: ")
         cursor.execute(f"CREATE DATABASE {db_name}")
-        print(f"Banco de dados '{db_name}' criado com sucesso!")
+        print(f"Banco de dados '{db_name}' criado com sucesso! \n")
 
     except mysql.connector.Error as error:
-        print(f"Erro ao criar o banco de dados: {error}")
+        print(f"Erro ao criar o banco de dados: {error} \n")
 
     finally:
         if cursor:

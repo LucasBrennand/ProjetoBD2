@@ -12,7 +12,7 @@ def delete_database():
         print("Conexão ao servidor MySQL estabelecida com sucesso.")
         db_name = input("Digite o nome do banco de dados: ")
         cursor.execute(f"DROP DATABASE {db_name}")
-        print(f"Banco de dados '{db_name}' excluído com sucesso!") 
+        print(f"Banco de dados '{db_name}' excluído com sucesso! \n") 
 
     except mysql.connector.Error as error:
-        print(f"Erro ao excluir o banco de dados: {error}")
+        print(f"Erro ao excluir o banco de dados: {error} \n")

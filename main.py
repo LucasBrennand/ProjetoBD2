@@ -29,22 +29,22 @@ def main():
                 match escolha_insert:
                     case "1":
                         insert_cliente()
-                        print("Inserido com successo")
+                        print("Inserido com successo \n")
                     case "2":
                         insert_fornecedor()
-                        print("Inserido com successo")
+                        print("Inserido com successo \n")
                     case "3":
                         insert_ingredientes()
-                        print("Inserido com successo")
+                        print("Inserido com successo \n")
                     case "4":
                         insert_prato()
-                        print("Inserido com successo")
+                        print("Inserido com successo \n")
                     case "5":
                         insert_usos()
-                        print("Inserido com successo")
+                        print("Inserido com successo \n")
                     case "6":
                         insert_vendas()
-                        print("Inserido com successo")
+                        print("Inserido com successo \n")
                 break
             case "2":
                 print("Selecionar dados")
@@ -86,10 +86,10 @@ def main():
                         view_detalhes_venda()
                         break
                     case "2":
-                        view_vendas_por_cliente
+                        view_vendas_por_cliente()
                         break
                     case "3":
-                        view_vendas_por_dia
+                        view_vendas_por_dia()
                         break
                 break
             case "4":
@@ -112,7 +112,7 @@ def main():
                 print("Sair")
                 break
             case _:
-                print("Opção inválida. Tente novamente.")
+                print("Opção inválida. Tente novamente. \n")
     
 
 if __name__ == "__main__":
