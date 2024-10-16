@@ -58,9 +58,39 @@ def main():
                 match escolha_select:
                     case "1":
                         select_cliente()
+                        while True:
+                            print("Caso deseje visualizar os valores de uma só coluna")
+                            print("1 - nome")
+                            print("2 - sexo")
+                            print("3 - idade")
+                            print("4 - nascimento")
+                            print("5 - pontos")
+                            print("6 - Sair")
+                            escolha_coluna = input("Escolha uma opção: ")
+                            match escolha_coluna:
+                                case "1":
+                                    select_nome_cliente()
+                                    break
+                                case "2":
+                                    select_sexo_cliente()
+                                    break
+                                case "3":
+                                    select_idade_cliente()
+                                    break
+                                case "4":
+                                    select_nascimento_cliente()
+                                    break
+                                case "5":
+                                    select_pontos_cliente()
+                                    break
+                                case "6":
+                                    print("Sair")
+                                    break
+                                case _:
+                                    print("Opção inválida. Tente novamente. \n")                   
                         break
                     case "2":
-                        select_fornecedor
+                        select_fornecedor()
                         break
                     case "3":
                         select_ingredientes()
