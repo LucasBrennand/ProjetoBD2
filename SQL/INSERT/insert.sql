@@ -62,7 +62,7 @@ INSERT INTO `usos` (`id_prato`, `id_ingrediente`) VALUES
 (6, 5),
 (4, 5);
 
-NSERT INTO `vendas` (`id`, `id_cliente`, `id_prato`, `quantidade`, `dia`, `hora`, `valor`) VALUES
+INSERT INTO `vendas` (`id`, `id_cliente`, `id_prato`, `quantidade`, `dia`, `hora`, `valor`) VALUES
 (1, 1, 1, 2, '2024-10-01', '12:30:00', 71.8),
 (2, 2, 2, 1, '2024-10-02', '13:00:00', 28.5),
 (3, 3, 3, 3, '2024-10-03', '19:45:00', 96),
