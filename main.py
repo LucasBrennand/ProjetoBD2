@@ -140,9 +140,11 @@ def main():
                 break
             case "6":
                 print("Sair")
+                exit()
                 break
             case _:
                 print("Opção inválida. Tente novamente. \n")
+                break
     
 
 if __name__ == "__main__":
