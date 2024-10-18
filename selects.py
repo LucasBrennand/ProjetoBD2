@@ -563,3 +563,101 @@ def select_disponibilidade_prato():
             cursor.close()
             connection.mybd.close()
             print("Conexão encerrada.")
+
+# Tabela vendas
+
+def select_quantidade_vendas():
+    connection = Manage()
+    if connection is None:
+        return
+
+    try:
+        sql_query = "SELECT quantidade FROM vendas"
+        cursor = connection.mycursor
+        cursor.execute(sql_query)
+        results = cursor.fetchall()
+        column_names = [i[0] for i in cursor.description]
+
+        df = pd.DataFrame(results, columns=column_names)
+        print(df)
+
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+    finally:
+        if connection.mybd.is_connected():
+            cursor.close()
+            connection.mybd.close()
+            print("Conexão encerrada.")
+
+def select_dia_vendas():
+    connection = Manage()
+    if connection is None:
+        return
+
+    try:
+        sql_query = "SELECT dia FROM vendas"
+        cursor = connection.mycursor
+        cursor.execute(sql_query)
+        results = cursor.fetchall()
+        column_names = [i[0] for i in cursor.description]
+
+        df = pd.DataFrame(results, columns=column_names)
+        print(df)
+
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+    finally:
+        if connection.mybd.is_connected():
+            cursor.close()
+            connection.mybd.close()
+            print("Conexão encerrada.")
+
+def select_hora_vendas():
+    connection = Manage()
+    if connection is None:
+        return
+
+    try:
+        sql_query = "SELECT hora FROM vendas"
+        cursor = connection.mycursor
+        cursor.execute(sql_query)
+        results = cursor.fetchall()
+        column_names = [i[0] for i in cursor.description]
+
+        df = pd.DataFrame(results, columns=column_names)
+        print(df)
+
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+    finally:
+        if connection.mybd.is_connected():
+            cursor.close()
+            connection.mybd.close()
+            print("Conexão encerrada.")
+
+def select_valor_vendas():
+    connection = Manage()
+    if connection is None:
+        return
+
+    try:
+        sql_query = "SELECT valor FROM vendas"
+        cursor = connection.mycursor
+        cursor.execute(sql_query)
+        results = cursor.fetchall()
+        column_names = [i[0] for i in cursor.description]
+
+        df = pd.DataFrame(results, columns=column_names)
+        print(df)
+
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+    finally:
+        if connection.mybd.is_connected():
+            cursor.close()
+            connection.mybd.close()
+            print("Conexão encerrada.")
