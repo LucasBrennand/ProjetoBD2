@@ -180,6 +180,33 @@ def main():
                        break
                     case "6":
                        select_vendas()
+                       while True:
+                            print("Caso deseje visualizar os valores de uma só coluna")
+                            print("1 - quantidade")
+                            print("2 - dia")
+                            print("3 - hora")
+                            print("4 - valor")
+                            print("5 - Sair")
+                            escolha_coluna = input("Escolha uma opção: ")
+                            match escolha_coluna:
+                                case "1":
+                                    select_quantidade_vendas()
+                                    break
+                                case "2":
+                                    select_dia_vendas()
+                                    break
+                                case "3":
+                                    select_hora_vendas()
+                                    break
+                                case "4":
+                                    select_valor_vendas()
+                                    break
+                                case "5":
+                                    print("Sair")
+                                    break
+                                case _:
+                                    print("Opção inválida. Tente novamente. \n")
+                                    break
                        break
                 break
             case "3":
