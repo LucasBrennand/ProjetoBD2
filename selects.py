@@ -172,6 +172,7 @@ def select_vendas():
             print("Conexão encerrada.")    
 
 # SELECT individual para cada coluna:
+# Tabela cliente
 
 def select_nome_cliente():
     connection = Manage()
@@ -276,6 +277,276 @@ def select_pontos_cliente():
 
     try:
         sql_query = "SELECT pontos FROM cliente"
+        cursor = connection.mycursor
+        cursor.execute(sql_query)
+        results = cursor.fetchall()
+        column_names = [i[0] for i in cursor.description]
+
+        df = pd.DataFrame(results, columns=column_names)
+        print(df)
+
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+    finally:
+        if connection.mybd.is_connected():
+            cursor.close()
+            connection.mybd.close()
+            print("Conexão encerrada.")
+
+# Tabela fornecedor
+
+def select_nome_fornecedor():
+    connection = Manage()
+    if connection is None:
+        return
+
+    try:
+        sql_query = "SELECT nome FROM fornecedor"
+        cursor = connection.mycursor
+        cursor.execute(sql_query)
+        results = cursor.fetchall()
+        column_names = [i[0] for i in cursor.description]
+
+        df = pd.DataFrame(results, columns=column_names)
+        print(df)
+
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+    finally:
+        if connection.mybd.is_connected():
+            cursor.close()
+            connection.mybd.close()
+            print("Conexão encerrada.")
+
+def select_estadoOrigem_fornecedor():
+    connection = Manage()
+    if connection is None:
+        return
+
+    try:
+        sql_query = "SELECT estado_origem FROM fornecedor"
+        cursor = connection.mycursor
+        cursor.execute(sql_query)
+        results = cursor.fetchall()
+        column_names = [i[0] for i in cursor.description]
+
+        df = pd.DataFrame(results, columns=column_names)
+        print(df)
+
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+    finally:
+        if connection.mybd.is_connected():
+            cursor.close()
+            connection.mybd.close()
+            print("Conexão encerrada.")
+
+# Tabela ingredientes
+
+def select_nome_ingredientes():
+    connection = Manage()
+    if connection is None:
+        return
+
+    try:
+        sql_query = "SELECT nome FROM ingredientes"
+        cursor = connection.mycursor
+        cursor.execute(sql_query)
+        results = cursor.fetchall()
+        column_names = [i[0] for i in cursor.description]
+
+        df = pd.DataFrame(results, columns=column_names)
+        print(df)
+
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+    finally:
+        if connection.mybd.is_connected():
+            cursor.close()
+            connection.mybd.close()
+            print("Conexão encerrada.")
+
+def select_dataF_ingredientes():
+    connection = Manage()
+    if connection is None:
+        return
+
+    try:
+        sql_query = "SELECT data_fabricacao FROM ingredientes"
+        cursor = connection.mycursor
+        cursor.execute(sql_query)
+        results = cursor.fetchall()
+        column_names = [i[0] for i in cursor.description]
+
+        df = pd.DataFrame(results, columns=column_names)
+        print(df)
+
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+    finally:
+        if connection.mybd.is_connected():
+            cursor.close()
+            connection.mybd.close()
+            print("Conexão encerrada.")
+
+def select_dataVal_ingredientes():
+    connection = Manage()
+    if connection is None:
+        return
+
+    try:
+        sql_query = "SELECT data_validade FROM ingredientes"
+        cursor = connection.mycursor
+        cursor.execute(sql_query)
+        results = cursor.fetchall()
+        column_names = [i[0] for i in cursor.description]
+
+        df = pd.DataFrame(results, columns=column_names)
+        print(df)
+
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+    finally:
+        if connection.mybd.is_connected():
+            cursor.close()
+            connection.mybd.close()
+            print("Conexão encerrada.")
+
+def select_quantidade_ingredientes():
+    connection = Manage()
+    if connection is None:
+        return
+
+    try:
+        sql_query = "SELECT quantidade FROM ingredientes"
+        cursor = connection.mycursor
+        cursor.execute(sql_query)
+        results = cursor.fetchall()
+        column_names = [i[0] for i in cursor.description]
+
+        df = pd.DataFrame(results, columns=column_names)
+        print(df)
+
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+    finally:
+        if connection.mybd.is_connected():
+            cursor.close()
+            connection.mybd.close()
+            print("Conexão encerrada.")
+
+def select_observacao_ingredientes():
+    connection = Manage()
+    if connection is None:
+        return
+
+    try:
+        sql_query = "SELECT observacao FROM ingredientes"
+        cursor = connection.mycursor
+        cursor.execute(sql_query)
+        results = cursor.fetchall()
+        column_names = [i[0] for i in cursor.description]
+
+        df = pd.DataFrame(results, columns=column_names)
+        print(df)
+
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+    finally:
+        if connection.mybd.is_connected():
+            cursor.close()
+            connection.mybd.close()
+            print("Conexão encerrada.")
+
+# Tabela prato
+
+def select_nome_prato():
+    connection = Manage()
+    if connection is None:
+        return
+
+    try:
+        sql_query = "SELECT nome FROM prato"
+        cursor = connection.mycursor
+        cursor.execute(sql_query)
+        results = cursor.fetchall()
+        column_names = [i[0] for i in cursor.description]
+
+        df = pd.DataFrame(results, columns=column_names)
+        print(df)
+
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+    finally:
+        if connection.mybd.is_connected():
+            cursor.close()
+            connection.mybd.close()
+            print("Conexão encerrada.")
+
+def select_descricao_prato():
+    connection = Manage()
+    if connection is None:
+        return
+
+    try:
+        sql_query = "SELECT descricao FROM prato"
+        cursor = connection.mycursor
+        cursor.execute(sql_query)
+        results = cursor.fetchall()
+        column_names = [i[0] for i in cursor.description]
+
+        df = pd.DataFrame(results, columns=column_names)
+        print(df)
+
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+    finally:
+        if connection.mybd.is_connected():
+            cursor.close()
+            connection.mybd.close()
+            print("Conexão encerrada.")
+
+def select_valor_prato():
+    connection = Manage()
+    if connection is None:
+        return
+
+    try:
+        sql_query = "SELECT valor FROM prato"
+        cursor = connection.mycursor
+        cursor.execute(sql_query)
+        results = cursor.fetchall()
+        column_names = [i[0] for i in cursor.description]
+
+        df = pd.DataFrame(results, columns=column_names)
+        print(df)
+
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+    finally:
+        if connection.mybd.is_connected():
+            cursor.close()
+            connection.mybd.close()
+            print("Conexão encerrada.")
+
+def select_disponibilidade_prato():
+    connection = Manage()
+    if connection is None:
+        return
+
+    try:
+        sql_query = "SELECT disponibilidade FROM prato"
         cursor = connection.mycursor
         cursor.execute(sql_query)
         results = cursor.fetchall()
