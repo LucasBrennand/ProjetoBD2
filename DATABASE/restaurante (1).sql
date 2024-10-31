@@ -542,3 +542,39 @@ GRANT INSERT, SELECT ON restaurante.venda TO 'funcionario'@'localhost';
 GRANT INSERT ON restaurante.* TO 'funcionario'@'localhost';
 FLUSH PRIVILEGES;
 -- --------------------------------------------------------
+
+-- Criar sistema de login (usuário -> senha)
+CREATE TABLE login (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  nome VARCHAR(50),
+  email VARCHAR(50),
+  senha VARCHAR(20)
+);
+
+DELIMITER $$
+CREATE PROCEDURE verificar_login(IN nome VARCHAR(100), IN email VARCHAR(100), IN senha VARCHAR(100))
+BEGIN
+  SELECT id, nome
+  FROM login
+  WHERE nome = nome AND email = email AND senha = senha;
+END$$
+DELIMITER ;
+
+--
+-- Criação de alguns usuários para o sistema
+--
+
+INSERT INTO login (nome, email, senha) VALUES
+  ('João', 'joao@example.com', 'senha1'),
+  ('Maria', 'maria@example.com', 'senha2'),
+  ('Pedro', 'pedro@example.com', 'senha3');
+
+--
+-- Chamada para verificar as credenciais de login passando dados como (nome / email & senha)
+--
+
+-- CALL verificar_login('João', 'joao@example.com', 'senha1'); 
+
+-- ele irá retornar o ID & nome do usuário e se as credenciais do usuário forem CORRETAS !
+
+-- --------------------------------------------------------
