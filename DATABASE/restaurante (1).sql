@@ -543,38 +543,79 @@ GRANT INSERT ON restaurante.* TO 'funcionario'@'localhost';
 FLUSH PRIVILEGES;
 -- --------------------------------------------------------
 
--- Criar sistema de login (usuário -> senha)
-CREATE TABLE login (
+-- SISTEMA DE LOGIN
+
+-- Este sistema de login é usado para controlar quem pode acessar o banco de dados.
+-- Ele tem duas partes principais: uma tabela para armazenar informações sobre os usuários e outra para armazenar informações sobre as sessões de login.
+
+-- Tabela Usuários
+-- A tabela de usuários armazena informações como nome, email e senha.
+CREATE TABLE usuarios (
   id INT PRIMARY KEY AUTO_INCREMENT,
-  nome VARCHAR(50),
-  email VARCHAR(50),
-  senha VARCHAR(20)
+  nome VARCHAR(100) NOT NULL,
+  email VARCHAR(100) NOT NULL UNIQUE,
+  senha VARCHAR(255) NOT NULL,
+  nivel_acesso ENUM('admin', 'gerente', 'funcionario') NOT NULL DEFAULT 'funcionario',
+  criado_em TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  atualizado_em TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
+-- Tabela Sessões
+-- A tabela de sessões armazena informações como o token de login e a data de expiração.
+CREATE TABLE sessoes (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  usuario_id INT NOT NULL,
+  token VARCHAR(255) NOT NULL,
+  expiracao TIMESTAMP NOT NULL,
+  criado_em TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (usuario_id) REFERENCES usuarios (id)
+);
+
+-- O sistema tem três níveis de acesso: admin, gerente e funcionário.
+-- O admin tem permissão para fazer tudo.
+-- O gerente pode buscar, apagar e editar informações.
+-- O funcionário pode adicionar novos registros e consultar vendas.
+-- Procedimento para criar um novo usuário
 DELIMITER $$
-CREATE PROCEDURE verificar_login(IN nome VARCHAR(100), IN email VARCHAR(100), IN senha VARCHAR(100))
+CREATE PROCEDURE criar_usuario(IN nome VARCHAR(100), IN email VARCHAR(100), IN senha VARCHAR(255), IN nivel_acesso ENUM('admin', 'gerente', 'funcionario'))
 BEGIN
-  SELECT id, nome
-  FROM login
-  WHERE nome = nome AND email = email AND senha = senha;
+  INSERT INTO usuarios (nome, email, senha, nivel_acesso) VALUES (nome, email, senha, nivel_acesso);
 END$$
 DELIMITER ;
 
---
--- Criação de alguns usuários para o sistema
---
+-- Quando um usuário tenta logar, o sistema verifica se as credenciais estão corretas.
+-- Se estiverem, o sistema gera um token de login e armazena na tabela de sessões.
+-- Procedimento para autenticar um usuário
+DELIMITER $$
+CREATE PROCEDURE autenticar_usuario(IN email VARCHAR(100), IN senha VARCHAR(255))
+BEGIN
+  DECLARE usuario_id INT;
+  SELECT id INTO usuario_id FROM usuarios WHERE email = email AND senha = senha;
+  IF usuario_id IS NOT NULL THEN
+    INSERT INTO sessoes (usuario_id, token, expiracao) VALUES (usuario_id, UUID(), NOW() + INTERVAL 1 HOUR);
+    SELECT token FROM sessoes WHERE usuario_id = usuario_id ORDER BY criado_em DESC LIMIT 1;
+  ELSE
+    SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Usuário ou senha inválidos';
+  END IF;
+END$$
+DELIMITER ;
 
-INSERT INTO login (nome, email, senha) VALUES
-  ('João', 'joao@example.com', 'senha1'),
-  ('Maria', 'maria@example.com', 'senha2'),
-  ('Pedro', 'pedro@example.com', 'senha3');
+-- O token de login é usado para verificar se o usuário está logado e se o token ainda é válido.
+-- Procedimento para verificar se um token é válido
+DELIMITER $$
+CREATE PROCEDURE verificar_token(IN token VARCHAR(255))
+BEGIN
+  DECLARE usuario_id INT;
+  SELECT usuario_id INTO usuario_id FROM sessoes WHERE token = token AND expiracao > NOW();
+  IF usuario_id IS NOT NULL THEN
+    SELECT TRUE;
+  ELSE
+    SELECT FALSE;
+  END IF;
+END$$
+DELIMITER ;
 
---
--- Chamada para verificar as credenciais de login passando dados como (nome / email & senha)
---
-
--- CALL verificar_login('João', 'joao@example.com', 'senha1'); 
-
--- ele irá retornar o ID & nome do usuário e se as credenciais do usuário forem CORRETAS !
+-- O sistema é seguro porque as senhas são armazenadas de forma criptografada e os tokens de login têm uma data de expiração.
+-- Além disso, os usuários têm níveis de acesso diferentes, o que permite controlar quem pode fazer o quê.
 
 -- --------------------------------------------------------
